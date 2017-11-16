@@ -1,0 +1,9 @@
+<a href="#" class="list-group-item clearfix">
+	<div class="pull-left" (click)="onSelected()">
+		<h4 class="list-group-item-heading">{{ preview.title }}</h4>
+		<!--  <p class="list-group-item-next">{{ preview.synopsis }}</p> -->
+	</div>
+	<span class="pull-right">
+		<img [src]="preview.imagePath" alt="{{ preview.title }}" class="img-responsive" style="max-height: 50px;">
+	</span>
+</a>
