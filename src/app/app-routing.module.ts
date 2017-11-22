@@ -14,7 +14,9 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/humanity', pathMatch: 'full' },
   { path: 'humanity', component: AboutComponent },
   { path: 'releases', component: ComicsComponentComponent, children: [
-    { path: ':id', component: ComicsDetailsComponent }, 
+    {path: 'list', component: ComicsListComponent, children: [
+     { path: ':id', component: ComicsDetailsComponent }, 
+      ]},
   ]},
   { path: 'previews', component: PreviewComponentComponent },
   { path: 'shopping-cart', component: CartComponentComponent },

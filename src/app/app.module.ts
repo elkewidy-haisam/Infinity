@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
@@ -27,6 +28,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CartItemsComponent } from './cart-component/cart-items/cart-items.component';
+import { HttpsRequestInterceptor } from './shared/interceptor.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -54,9 +57,15 @@ import { CartItemsComponent } from './cart-component/cart-items/cart-items.compo
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [CartService, ComicService, OrderService, DataStorageService, PreviewService],
+  providers: [CartService, 
+              ComicService, 
+              OrderService, 
+              DataStorageService, 
+              PreviewService, 
+            { provide: HTTP_INTERCEPTORS, useClass: HttpsRequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,3 +9,18 @@ Praesent sagittis elit eget ex sagittis, eget lobortis sapien mollis. Nullam bib
 
 Pellentesque at mattis mi, id tempor ex. Aliquam condimentum rutrum elit. Vivamus tristique quam eu lorem feugiat, viverra elementum nunc viverra. Fusce eget lectus rhoncus, cursus nibh quis, cursus dolor. In nec nulla eros. Mauris sodales lorem venenatis dapibus efficitur. Etiam nisi metus, euismod vitae suscipit non, convallis vel arcu. Aliquam in arcu vel dolor dignissim tincidunt. Integer aliquam accumsan mollis. Donec dapibus magna in facilisis dictum. Nulla et porta dolor, in eleifend ex. Nam in convallis est, non porta magna.
 </p>
+
+<button type="submit" (click)="onSaveFirebaseComics()">SAVE FIREBASE COMICS (TEST)</button>
+<button type="submit" (click)="onFetchFirebaseComics()">FETCH FIREBASE COMICS (TEST)</button>
+<button type="submit" (click)="onSaveFirebasePreviews()">SAVE FIREBASE PREVIEWS (TEST)</button>
+<button type="submit" (click)="onFetchFirebasePreviews()">FETCH FIREBASE PREVIEWS (TEST)</button>
+
+<div class="row">
+	<div class="col-xs-12">
+		<app-comics-item
+		 *ngFor="let Comic of comics; let i = index" 
+		 [comic]="Comic"
+		 [index]="i"
+		 (comicSelected)="onComicSelected(Comic)"></app-comics-item>
+	</div>
+</div>

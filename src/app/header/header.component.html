@@ -7,7 +7,7 @@
 		<div class="navigation-bar" id="navigation-bar">
 			<ul class="nav navbar-nav">
 				<li routerLinkActive="active"><a style="cursor: pointer;" routerLink="/humanity" class="navigation-bar-element" >ABOUT</a></li>
-				<li routerLinkActive="active"><a style="cursor: pointer;" routerLink="/releases" class="navigation-bar-element" >RELEASES</a></li>
+				<li routerLinkActive="active"><a style="cursor: pointer;" (click)="onFetchFirebaseComics()" routerLink="/releases" class="navigation-bar-element" >RELEASES</a></li>
 				<li routerLinkActive="active"><a style="cursor: pointer;" routerLink="/previews" class="navigation-bar-element" >PREVIEWS</a></li>
 				<li routerLinkActive="active"><a style="cursor: pointer;" routerLink="/shopping-cart" class="navigation-bar-element" >CART</a></li>
 				<li routerLinkActive="active"><a style="cursor: pointer;" routerLink="/order-history" class="navigation-bar-element" >PURCHASES</a></li>

@@ -8,7 +8,9 @@ import { Preview } from '../preview-component/preview.model';
 import { PreviewService } from '../preview-component/preview.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/Rx';
 
 
@@ -16,13 +18,93 @@ import 'rxjs/Rx';
 @Injectable()
 export class DataStorageService {
   
-   constructor(private http: Http, private cartService: CartService, 
+   constructor(private httpClient: HttpClient, private http: Http, private cartService: CartService, 
      private orderService: OrderService, private previewService: PreviewService,
      private comicService: ComicService) {}
   
+  
+  storeComics() {
+    
+    return this.http.put('https://infinity-database-test.firebaseio.com/comics.json', this.comicService.getComics());
+    
+  }
+  
+  storeFirebasePreviews() {
+    
+    return this.httpClient.put('https://infinity-database-test.firebaseio.com/previews.json', this.previewService.getFirebasePreviews(), {
+      observe: 'body',
+      responseType: 'json'
+    });
+    
+  }
+  
+  storeFirebaseComics() {
+    
+    return this.httpClient.put('https://infinity-database-test.firebaseio.com/comic.json', this.comicService.getFirebaseComics(), {
+      observe: 'response',
+      responseType: 'json'
+    });
+    
+  }
+  
+  getFirebasePreviews() {
+    
+    return this.httpClient.get<Preview[]>('https://infinity-database-test.firebaseio.com/comics.json', {
+      
+      observe: 'body',
+      responseType: 'json'
+      
+    })
+    .map(
+      (previews) => {
+       
+       console.log(previews);
+       return previews;
+        
+      }
+    )
+    .subscribe(
+       (previews: Preview[]) => {
+         console.log("checking that the previews have been fetched: " + previews)
+        this.previewService.setPreviews(previews);
+       } 
+     );
+  }
+  
+  getFirebaseComics() {
+    
+    this.httpClient.get<Comic[]>('https://infinity-database-test.firebaseio.com/comic.json', {
+      observe: 'body',
+      responseType: 'json' 
+    })
+    .map(
+      (comics) => {
+      
+      console.log(comics);
+      return comics;
+        
+      }
+    )
+    .subscribe(
+       (comics: Comic[]) => {
+         
+         console.log("checking that the comics have been fetched: " + comics)
+         this.comicService.setComics(comics);
+           
+         }
+     );
+  }
+      
+  
+  
    storeCarts() {
      
-     return this.http.put('https://infinity-database-test.firebaseio.com/cart.json', this.cartService.getComics());
+     return this.httpClient.put('https://infinity-database-test.firebaseio.com/cart.json', this.cartService.getComics(), {
+       
+       observe: 'body',
+       responseType: 'json'
+       
+     });
      
    }
   
