@@ -1,10 +1,10 @@
 export class Preview {
-  public title: string;
-  public synopsis: string;
-  public imagePath: string;
-  constructor(title: string, synopsis: string, imagePath: string) {
-    this.title = title;
-    this.synopsis = synopsis;
-    this.imagePath = imagePath;
+  public previewTitle: string;
+  public previewSynopsis: string;
+  public previewImagePath: string;
+  constructor(previewTitle: string, previewSynopsis: string, previewImagePath: string) {
+    this.previewTitle = previewTitle;
+    this.previewSynopsis = previewSynopsis;
+    this.previewImagePath = previewImagePath;
   }
 }

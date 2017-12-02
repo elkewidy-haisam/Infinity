@@ -31,7 +31,7 @@ export class DataStorageService {
   
   storeFirebasePreviews() {
     
-    return this.httpClient.put('https://infinity-database-test.firebaseio.com/previews.json', this.previewService.getFirebasePreviews(), {
+    return this.httpClient.put('humanity/previews/allPreviews', this.previewService.getFirebasePreviews(), {
       observe: 'body',
       responseType: 'json'
     });
@@ -49,7 +49,7 @@ export class DataStorageService {
   
   getFirebasePreviews() {
     
-    return this.httpClient.get<Preview[]>('https://infinity-database-test.firebaseio.com/comics.json', {
+    this.httpClient.get<Preview[]>('https://infinity-database-test.firebaseio.com/comics.json', {
       
       observe: 'body',
       responseType: 'json'

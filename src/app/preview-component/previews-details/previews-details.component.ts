@@ -9,6 +9,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 export class PreviewsDetailsComponent implements OnInit {
 
   @Input() preview: Preview;
+  @Input() index: number;
   @Output() previewSelected = new EventEmitter<void>();
   
   constructor() { }

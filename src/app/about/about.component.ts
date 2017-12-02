@@ -1,5 +1,7 @@
 import { Comic } from '../comics-component/comic.model';
 import { ComicService } from '../comics-component/comic.service';
+import { PreviewService } from '../preview-component/preview.service';
+import { Preview } from '../preview-component/preview.model';
 import { DataStorageService } from '../shared/data-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpEvent } from '@angular/common/http';
@@ -13,10 +15,9 @@ import { HttpClient } from '@angular/common/http';
 export class AboutComponent implements OnInit {
   
   comics: Comic[];
+  previews: Preview[];
 
-  constructor(private dataStorageService: DataStorageService, private comicService: ComicService, private httpClient: HttpClient) {
-  
-    this.comics = this.comicService.getComics();
+  constructor(private dataStorageService: DataStorageService, private comicService: ComicService, private httpClient: HttpClient, private previewService: PreviewService) {
   
    }
 
@@ -40,7 +41,7 @@ export class AboutComponent implements OnInit {
     /*this.dataStorageService.getFirebaseComics();
     console.log("Fetching Firebase comics..."); */
     
-    this.httpClient.get<Comic[]>('https://infinity-database-test.firebaseio.com/comic.json', {
+    this.httpClient.get<Comic[]>('/humanity/comics/getAllComics', {
       observe: 'body',
       responseType: 'json' 
     })
@@ -77,9 +78,32 @@ export class AboutComponent implements OnInit {
   
   onFetchFirebasePreviews() {
     
-    this.dataStorageService.getFirebasePreviews();
-    console.log("Fetching Firebase previews...");
+   /*  this.dataStorageService.getFirebasePreviews();
+    console.log("Fetching Firebase previews..."); */
     
-  }
+      this.httpClient.get<Preview[]>('/humanity/previews/allPreviews', {
+      
+      observe: 'body',
+      responseType: 'json'
+      
+    })
+    .map(
+      (previews) => {
+       
+       console.log(previews);
+       return previews;
+        
+      }
+    )
+    .subscribe(
+       (previews: Preview[]) => {
+         console.log("checking that the previews have been fetched: " + previews)
+        this.previews = previews;
+         
+       } 
+     );
+    
+    
+    }
 
 }

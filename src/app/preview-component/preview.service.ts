@@ -1,12 +1,15 @@
 import { Preview } from './preview.model';
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 
 @Injectable()
 export class PreviewService {
   
-  previewsChanged = new EventEmitter<Preview[]>();
-  private previews: Preview[];
+  previewSelected = new EventEmitter<Preview>();
+  observePreviews = new EventEmitter<Preview[]>();
+  previewsChanged = new Subject<Preview[]>();
+  previews: Preview[];
   
   
     fireBasePreviews: Preview[] = [
@@ -18,11 +21,23 @@ export class PreviewService {
       
    ];
   
-  setPreviews(previews: Preview[]) {
+    setPreviews(previews: Preview[]) {
+      
+      this.previews = previews;
+       console.log("Checking that the previews were actually placed there welp: " + this.previews.slice());
+      // console.log("Comparing it to firebase comics: " + this.fireBaseComics.slice());
+      console.log("Checking that if you fetch the comics now; you actually get them: " + this.getPreviews());
+      this.previewsChanged.next(this.previews.slice());
+      this.observePreviews.emit(this.previews.slice());
+      
+    }
     
-    this.previews = previews;
-    
-  }
+    getPreviews() {
+        
+        console.log("Trying to fetch the previews using the getPreviews() method: " + this.previews.slice());
+        return this.previews.slice();
+        
+    }
 
     getFirebasePreviews() {
       

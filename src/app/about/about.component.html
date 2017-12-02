@@ -15,12 +15,23 @@ Pellentesque at mattis mi, id tempor ex. Aliquam condimentum rutrum elit. Vivamu
 <button type="submit" (click)="onSaveFirebasePreviews()">SAVE FIREBASE PREVIEWS (TEST)</button>
 <button type="submit" (click)="onFetchFirebasePreviews()">FETCH FIREBASE PREVIEWS (TEST)</button>
 
+<h1> COMICS </h1>
+
 <div class="row">
 	<div class="col-xs-12">
 		<app-comics-item
 		 *ngFor="let Comic of comics; let i = index" 
 		 [comic]="Comic"
-		 [index]="i"
-		 (comicSelected)="onComicSelected(Comic)"></app-comics-item>
+		 [index]="i"></app-comics-item>
 	</div>
+</div>
+
+<h1> PREVIEWS </h1>
+
+<div class="row">
+		<div class="col-xs-12">
+			<app-previews-details
+			*ngFor="let Preview of previews; let i = index"
+			[preview]="Preview"></app-previews-details>
+		</div>
 </div>
