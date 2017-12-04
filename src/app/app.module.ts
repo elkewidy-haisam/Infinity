@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CartItemsComponent } from './cart-component/cart-items/cart-items.component';
 import { HttpsRequestInterceptor } from './shared/interceptor.module';
+import { JQUERY_PROVIDER } from './shared/jquery.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -60,7 +61,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [CartService, 
+  providers: [JQUERY_PROVIDER,
+              CartService, 
               ComicService, 
               OrderService, 
               DataStorageService, 

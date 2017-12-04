@@ -39,11 +39,25 @@
 		
 	}
 
-/* About text */
+	/* About text */
 
 	.about-text {
 	
 		text-align: justify;
 		text-transform: uppercase;
 		
+	}
+	
+	/* comic and preview links/sections */
+	
+	#comic, #preview {
+	
+		margin-top: auto;
+		margin-bottom: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		color: white;
+		height:150px;
+		position: relative;
+	
 	}

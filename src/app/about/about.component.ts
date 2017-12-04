@@ -3,7 +3,8 @@ import { ComicService } from '../comics-component/comic.service';
 import { PreviewService } from '../preview-component/preview.service';
 import { Preview } from '../preview-component/preview.model';
 import { DataStorageService } from '../shared/data-storage.service';
-import { Component, OnInit } from '@angular/core';
+import { JQUERY_TOKEN } from '../shared/jquery.service';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpEvent } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,8 +17,11 @@ export class AboutComponent implements OnInit {
   
   comics: Comic[];
   previews: Preview[];
+  
 
   constructor(private dataStorageService: DataStorageService, private comicService: ComicService, private httpClient: HttpClient, private previewService: PreviewService) {
+  
+   
   
    }
 
