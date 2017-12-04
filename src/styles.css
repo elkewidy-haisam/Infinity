@@ -2,6 +2,37 @@
 
 @CHARSET "ISO-8859-1";
 
+	.container {
+	
+	   background-color: grey;
+	
+	}
+	
+	.about-text {
+	
+		padding-left: 160px;
+		padding-right: 160px;
+		padding-top: 80px;
+		padding-bottom: 80px;
+	
+	}
+	
+	
+	h1 {
+	
+		color: white;
+	
+	}
+	
+	.buttons {
+	
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: auto;
+		margin-right: auto;
+	
+	}
+
 /* Navigation bar header */
 
 	/* Add a black background color to the top navigation */
