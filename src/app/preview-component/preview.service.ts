@@ -6,10 +6,9 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class PreviewService {
   
-  previewSelected = new EventEmitter<Preview>();
   observePreviews = new EventEmitter<Preview[]>();
   previewsChanged = new Subject<Preview[]>();
-  previews: Preview[];
+  previews: Preview[] = [];
   
   
     fireBasePreviews: Preview[] = [
@@ -28,7 +27,6 @@ export class PreviewService {
       // console.log("Comparing it to firebase comics: " + this.fireBaseComics.slice());
       console.log("Checking that if you fetch the comics now; you actually get them: " + this.getPreviews());
       this.previewsChanged.next(this.previews.slice());
-      this.observePreviews.emit(this.previews.slice());
       
     }
     

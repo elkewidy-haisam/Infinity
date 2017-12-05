@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   { path: 'humanity', component: AboutComponent },
   { path: 'releases', component: ComicsComponentComponent, children: [
     {path: 'list', component: ComicsListComponent, children: [
-     { path: ':id', component: ComicsDetailsComponent }, 
+     { path: ':id', component: ComicsItemComponent }, 
       ]},
   ]},
   { path: 'previews', component: PreviewComponentComponent },

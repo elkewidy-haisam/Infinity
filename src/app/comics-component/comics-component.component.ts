@@ -8,7 +8,6 @@ import { Response } from '@angular/http';
   selector: 'app-comics-component',
   templateUrl: './comics-component.component.html',
   styleUrls: ['./comics-component.component.css'],
-  providers: [ComicService]
 })
 export class ComicsComponentComponent implements OnInit {
 
@@ -18,12 +17,16 @@ export class ComicsComponentComponent implements OnInit {
   constructor(private comicService: ComicService, private dataStorageService: DataStorageService) {}
 
   ngOnInit() {
+    
     this.comicService.comicSelected
       .subscribe((comic: Comic) => {
       this.selectedComic = comic;
     });
     
+    console.log("Trying to get the comics and storing them into the main component: " + this.comicService.getComics());
+    console.log("What is actually being stored in the comics here: " + this.comics);
     this.comics = this.comicService.getComics();
+    
   }
   
 

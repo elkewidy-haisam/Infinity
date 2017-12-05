@@ -147,39 +147,58 @@ export class DataStorageService {
   
     getReleases() {
       
-      this.http.get('https://ng-recipe-book.firebaseio.com/releases.json')
-      .map(
-        (response: Response) => {
-          const comics: Comic[] = response.json();
-         
-          return comics;
-        }
-      )
-      .subscribe(
-        (comics: Comic[]) => {
-          this.comicService.setComics(comics);
-        }
-      );
+    /*this.dataStorageService.getFirebaseComics();
+    console.log("Fetching Firebase comics..."); */
+    
+    this.httpClient.get<Comic[]>('/humanity/comics/getAllComics', {
+      observe: 'body',
+      responseType: 'json' 
+    })
+    .map(
+      (comics) => {
       
+      console.log(comics);
+      return comics;
+        
+      }
+    )
+    .subscribe(
+       (comics: Comic[]) => {
+         
+         console.log("checking that the comics have been fetched: " + comics)
+         this.comicService.setComics(comics);
+           
+         }
+     );
       
     }
   
     getPreviews() {
       
-      this.http.get('https://ng-recipe-book.firebaseio.com/previews.json')
-      .map(
-        (response: Response) => {
-          const previews: Preview[] = response.json();
-         
-          return previews;
-        }
-      )
-      .subscribe(
-        (previews: Preview[]) => {
-          this.previewService.setPreviews(previews);
-        }
-      );
+        /*  this.dataStorageService.getFirebasePreviews();
+    console.log("Fetching Firebase previews..."); */
+    
+      this.httpClient.get<Preview[]>('/humanity/previews/allPreviews', {
       
+      observe: 'body',
+      responseType: 'json'
+      
+    })
+    .map(
+      (previews) => {
+       
+       console.log(previews);
+       return previews;
+        
+      }
+    )
+    .subscribe(
+       (previews: Preview[]) => {
+         console.log("checking that the previews have been fetched: " + previews)
+        this.previewService.setPreviews(previews);
+         
+       } 
+     );
       
     }
   

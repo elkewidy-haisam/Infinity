@@ -2,9 +2,27 @@
 
 @CHARSET "ISO-8859-1";
 
+
+	app-root {
+	
+		background-size: 100%;
+		background-repeat: no-repeat;
+	
+	}
+
+
+	.row {
+		
+		background-size: 100%;
+		background-repeat: no-repeat;
+	
+	}
+	
 	.container {
 	
 	   background-color: grey;
+	   background-size: 100%;
+	   background-repeat: no-repeat;
 	
 	}
 	

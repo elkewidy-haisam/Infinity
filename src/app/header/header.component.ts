@@ -1,6 +1,7 @@
 import { Cart } from '../cart-component/cart.model';
 import { Comic } from '../comics-component/comic.model';
 import { ComicService } from '../comics-component/comic.service';
+import { PreviewService } from '../preview-component/preview.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { HttpEvent } from '@angular/common/http';
@@ -13,7 +14,7 @@ export class HeaderComponent {
   comics: Comic[];
   private cart: Cart;
   
-  constructor(private dataStorageService: DataStorageService, private comicService: ComicService) {}
+  constructor(private dataStorageService: DataStorageService, private comicService: ComicService, private previewService: PreviewService) {}
   
   onSaveCart() {
     this.dataStorageService.storeCarts()
@@ -33,12 +34,14 @@ export class HeaderComponent {
   onFetchPreviews() {
     
     this.dataStorageService.getPreviews();
+    this.previewService.getPreviews();
     
   }
   
   onFetchReleases() {
     
     this.dataStorageService.getReleases();
+    this.comicService.getComics();
     
   }
   
@@ -52,7 +55,6 @@ export class HeaderComponent {
     
     console.log("Fetching Firebase comics...");
     this.dataStorageService.getFirebaseComics();
-    
      
   }
 

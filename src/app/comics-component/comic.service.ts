@@ -9,7 +9,6 @@ import 'rxjs/Rx';
 @Injectable()
 export class ComicService {
   
-    observeComics : EventEmitter<Comic[]>;
     comicSelected = new EventEmitter<Comic>();
     comicsChanged = new Subject<Comic[]>();
     
@@ -33,7 +32,6 @@ export class ComicService {
       // console.log("Comparing it to firebase comics: " + this.fireBaseComics.slice());
       console.log("Checking that if you fetch the comics now; you actually get them: " + this.getComics());
       this.comicsChanged.next(this.comics.slice());
-      this.observeComics.emit(this.comics.slice());
       
     }
     

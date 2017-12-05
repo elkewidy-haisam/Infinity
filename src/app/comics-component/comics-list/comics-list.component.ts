@@ -23,6 +23,13 @@ export class ComicsListComponent implements OnInit, OnDestroy {
      private router: Router,
    private route: ActivatedRoute) {
   
+    
+    
+      
+   }
+
+  ngOnInit() {
+   
     this.subscription = this.comicService.comicsChanged
       .subscribe(
         (comics : Comic[]) => {
@@ -30,13 +37,9 @@ export class ComicsListComponent implements OnInit, OnDestroy {
         }
       );
     
+    console.log("Trying to get the comics and store them in comics-list component.");
+    console.log("Actual: " + this.comics);
     this.comics = this.comicService.getComics();
-    
-      
-   }
-
-  ngOnInit() {
-   
     
   }
   
