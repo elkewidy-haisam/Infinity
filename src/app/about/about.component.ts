@@ -18,6 +18,8 @@ export class AboutComponent implements OnInit {
   comics: Comic[];
   previews: Preview[];
   
+  comic: Comic = new Comic(6, 'Testing the Post Method', 'Testing the Post Method', 'https://www.barnesandnoble.com/blog/sci-fi-fantasy/wp-content/uploads/sites/4/2015/03/asherdark.jpg');
+  
 
   constructor(private dataStorageService: DataStorageService, private comicService: ComicService, private httpClient: HttpClient, private previewService: PreviewService) {
   
@@ -27,6 +29,24 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+  
+  addComicToDatabase() {
+    
+    this.httpClient.post('humanity/comics/addComicToStore', this.comic, {
+      
+      observe: 'response',
+      responseType: 'json'
+      
+    }).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+
   }
   
  onSaveFirebaseComics() {

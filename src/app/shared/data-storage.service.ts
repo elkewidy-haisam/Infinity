@@ -6,6 +6,7 @@ import { Order } from '../orders-component/order.model';
 import { OrderService } from '../orders-component/order.service';
 import { Preview } from '../preview-component/preview.model';
 import { PreviewService } from '../preview-component/preview.service';
+import { ChargeRequest } from './charge.model';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
@@ -21,6 +22,8 @@ export class DataStorageService {
    constructor(private httpClient: HttpClient, private http: Http, private cartService: CartService, 
      private orderService: OrderService, private previewService: PreviewService,
      private comicService: ComicService) {}
+  
+  charge: ChargeRequest;
   
   
   storeComics() {
@@ -233,6 +236,37 @@ export class DataStorageService {
   addCartToOrderHistory() {
     
     return this.http.post('https://infinity-database-test.firebaseio.com/orders.json', this.cartService.getComics());
+    
+  }
+  
+  chargeCard(token: string, amount: number, description: string, paymentCurrency: string) {
+    
+    this.charge = new ChargeRequest(token, amount, paymentCurrency, description);
+    
+    console.log(this.charge);
+    console.log(this.charge.amount);
+    console.log(this.charge.description);
+    console.log(this.charge.paymentCurrency);
+    console.log(this.charge.token);
+    
+    this.httpClient.post('/humanity/charge', this.charge , {
+       
+       observe: 'body',
+       responseType: 'json'
+       
+     }).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+    
+  }
+  
+  chargeCreditCard(handler: any) {
+    
     
   }
   

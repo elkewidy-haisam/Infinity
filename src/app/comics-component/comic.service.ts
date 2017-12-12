@@ -15,11 +15,11 @@ export class ComicService {
     comics: Comic[] = [];
   
     fireBaseComics: Comic[] = [
-      new Comic('Firebase Title 1', 'Firebase Synopsis 1', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg' ),
-      new Comic('Firebase Title 2', 'Firebase Synopsis 2', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg' ),
-      new Comic('Firebase Title 3', 'Firebase Synopsis 3', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg' ),
-      new Comic('Firebase Title 4', 'Firebase Synopsis 4', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg' ),
-      new Comic('Firebase Title 5', 'Firebase Synopsis 5', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg' ),
+       new Comic(1, 'A Test Comic', 'this is simply a test', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg'),
+    new Comic(2, 'A Test Comic', 'this is simply a test', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg'),
+    new Comic(3, 'A Test Comic', 'this is simply a test', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg'),
+    new Comic(4, 'A Test Comic', 'this is simply a test', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg'),
+    new Comic(5, 'A Test Comic', 'this is simply a test', 'http://www.innomag.no/wp-content/uploads/ai-image.jpg')
       
    ];
   
